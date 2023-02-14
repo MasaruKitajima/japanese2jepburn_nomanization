@@ -32,25 +32,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     <script type="text/javascript">
       $(function() {
-        /*
-        var kuroshiro = new Kuroshiro();
-        const analyzer = new KuromojiAnalyzer({
-          dictPath: "/dict/"
-          });
-        kuroshiro.init(analyzer);
-
         $('#Convert').click(function(){
-          result=$('#JapaneseTextStringToConvert').text();
-          console.log(result);
+          var texttoconvert=$('#JapaneseTextStringToConvert').val();
+        var kuroshiro = new Kuroshiro.default();
+        //var analyzer = new KuromojiAnalyzer({
+        //  dictPath: "js/dict"
+        //  });
+          kuroshiro.init(new KuromojiAnalyzer({dictPath:"js/dict/"}))
+          .then(function(){
+            result = kuroshiro.convert(texttoconvert, {to:"romaji",romajiSystem:"hepburn"});
+            console.log("---------");
+            console.log(result);
+          })
+          .then(function(result){
+            console.log(result);
+          })
         });
-        */
-       kuroshiro.init(new KuromojiAnalyzer({ dictPath: "url/to/dictFiles" }))
-    .then(function () {
-        return kuroshiro.convert("感じ取れたら手を繋ごう、重なるのは人生のライン and レミリア最高！", { to: "hiragana" });
-    })
-    .then(function(result){
-        console.log(result);
-    })
       });
     </script>
   </body>
